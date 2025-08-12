@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تم الدفع بنجاح</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Tajawal font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Configure Tailwind to use Tajawal as default font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Tajawal', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen font-sans">
+    <!-- Success message container -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 text-center max-w-md">
+        <!-- Success checkmark icon -->
+        <svg class="w-20 h-20 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2l4 -4m6 2a9 9 0 11-18 0a9 9 0 0118 0z"/>
+        </svg>
+        
+        <!-- Success heading -->
+        <h1 class="text-2xl font-bold text-green-600 mt-4">تم الدفع بنجاح</h1>
+        
+        <!-- Thank you message -->
+        <p class="text-gray-600 mt-2">شكراً لك على الشراء. سنقوم بمعالجة طلبك قريباً.</p>
+        
+        <!-- Back to products button -->
+        <a href="/products" class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition">
+            العودة للصفحة المنتجات
+        </a>
+    </div>
+</body>
+</html>
