@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>قائمة المنتجات</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Tajawal font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Configure Tailwind to use Tajawal as default font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Tajawal', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Main container -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Page title -->
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">قائمة المنتجات</h1>
+        
+        <!-- Products grid - responsive columns -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {% for product in products %}
+            <!-- Product card -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <!-- Product image or placeholder -->
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover">
+                {% else %}
+                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">لا صورة</div>
+                {% endif %}
+                
+                <!-- Product details -->
+                <div class="p-4">
+                    <!-- Product name -->
+                    <h2 class="text-xl font-semibold text-gray-800">{{ product.name }}</h2>
+                    <!-- Product description -->
+                    <p class="text-gray-600 mt-2">{{ product.description }}</p>
+                    
+                    <!-- Price and buy button section -->
+                    <div class="flex justify-between items-center mt-4">
+                        <!-- Product price -->
+                        <span class="text-lg font-bold text-green-600">{{ product.price }} د.ج</span>
+                        <!-- Buy button -->
+                        <a href="{% url 'buy_product' product.id %}" 
+                           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">
+                            💳 اشتري الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
